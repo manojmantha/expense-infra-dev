@@ -69,6 +69,16 @@ resource "aws_security_group_rule" "app_alb_bastion" {
   security_group_id = module.app_alb_sg.sg_id
 }
 
+# APP ALB accepting traffic from vpn
+resource "aws_security_group_rule" "app_alb_vpn" {
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  source_security_group_id = module.vpn_sg.sg_id
+  security_group_id = module.app_alb_sg.sg_id
+}
+
 # Bastion accepting traffic from ssh
 resource "aws_security_group_rule" "bastion_public" {
   type              = "ingress"
@@ -126,5 +136,15 @@ resource "aws_security_group_rule" "mysql_bastion" {
   to_port           = 3306
   protocol          = "tcp"
   source_security_group_id = module.bastion_sg.sg_id
+  security_group_id = module.mysql_sg.sg_id
+}
+
+# Mysql accepting traffic from vpn
+resource "aws_security_group_rule" "mysql_vpn" {
+  type              = "ingress"
+  from_port         = 3306
+  to_port           = 3306
+  protocol          = "tcp"
+  source_security_group_id = module.vpn_sg.sg_id
   security_group_id = module.mysql_sg.sg_id
 }
