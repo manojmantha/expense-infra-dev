@@ -1,3 +1,9 @@
+## 🖼 Architecture Diagram
+
+![Expense Architecture](./expense-infra.drawio.svg)
+
+---
+
 # Expense Infrastructure – Development Environment
 
 This repository contains the complete **AWS infrastructure setup** for the **Expense application (Dev environment)**.  
@@ -15,11 +21,6 @@ The infrastructure is deployed inside a custom AWS VPC and follows a standard **
 
 The design ensures secure traffic flow from the internet to the database without exposing internal resources.
 
----
-
-## 🖼 Architecture Diagram
-
-![Expense Architecture](./expense-infra.drawio.svg)
 
 ---
 
